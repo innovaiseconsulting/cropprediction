@@ -1,0 +1,19 @@
+# Title of the app
+st.title('Crop Prediction App')
+
+# Input features
+soil_type = st.selectbox('Select Soil Type', ['Sandy', 'Clay', 'Loamy'])
+rainfall = st.slider('Rainfall (mm)', 0, 500, 100)
+temperature = st.slider('Temperature (°C)', 0, 50, 25)
+
+# Prepare input data for prediction
+input_data = pd.DataFrame({
+    'soil_type': [soil_type],
+    'rainfall': [rainfall],
+    'temperature': [temperature]
+})
+
+# Make prediction
+if st.button('Predict'):
+    prediction = model.predict(input_data)
+    st.write('Predicted Crop:', prediction[0])
